@@ -11,6 +11,11 @@
   </head>
 
   <body>
+  <% if current_user %>
+    Signed in as <%= current_user.name %> | <%= link_to "Logout", session_destroy_path(user_id: current_user.id), method: :get %>
+  <% else %>
+    <%= link_to 'Login', new_session_path %> | <%= link_to 'Signup', new_registration_path %>
+  <% end %>
     <%= yield %>
   </body>
 </html>
